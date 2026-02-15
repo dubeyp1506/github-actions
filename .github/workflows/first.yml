@@ -1,0 +1,17 @@
+name: firstWork flow
+on: push
+
+jobs:
+
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: welcome message
+              run : echo "welcome"
+
+            - name: List Files
+              run : ls
+
+            - name: Read Files
+              run : cat readme.md
+    
