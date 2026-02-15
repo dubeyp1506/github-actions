@@ -6,7 +6,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
           - name: Build Application
-            run : sudo apt-install cowsay -y
+            run : sudo apt-get install cowsay -y
 
           - name: Execute CosWay CMD
             run : cowsay -f dragon "Generating a Dragon using Cosway..." >> dragon.txt
