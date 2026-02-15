@@ -12,7 +12,7 @@ jobs:
             run : cowsay -f dragon "Generating a Dragon using Cosway..." >> dragon.txt
 
           - name: Upload Dragon text
-            uses: actions/upload-artifact@v3
+            uses: actions/upload-artifact@v4
             with:
               name: dragon-text-file
               path: dragon.txt
@@ -25,7 +25,7 @@ jobs:
           run : sleep 10
         
         - name: download Dragon artifact
-          uses: actions/download-artifact@v3
+          uses: actions/download-artifact@v4
           with:
             name: dragon-text-file
 
@@ -38,7 +38,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: download Dragon artifact
-          uses: actions/download-artifact@v3
+          uses: actions/download-artifact@v4
           with:
             name: dragon-text-file
 
