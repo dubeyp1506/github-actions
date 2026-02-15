@@ -9,11 +9,18 @@ jobs:
               uses: actions/checkout@v4
 
             - name: welcome message
-              run: echo "welcome"
+              run: |
+                echo "welcome"
+                ls
+                cat RREADME.md
 
-            - name: List Files
-              run: ls
+            - name : Generate ASCII Artwork
+              run: cowsay -f dragon "Run for coverm I am a Dragon" >> dragon.txt
 
-            - name: Read Files
-              run: cat README.md
+
+            # - name: List Files
+            #   run: ls
+
+            # - name: Read Files
+            #   run: cat README.md
     
