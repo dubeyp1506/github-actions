@@ -2,19 +2,38 @@ name: ASCII workflow
 on: push
 
 jobs:
-    ascii-job:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Repo
-              uses: actions/checkout@v4
+    build_job:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Build Application
+            run : sudo apt-install cosway -y
 
-            - name: list all the files
-              run : ls -ltra
+          - name: Execute CosWay CMD
+            run : cosway -f dragon "Generating a Dragon using Cosway..." >> dragon.txt
 
-            - name: Execting Shell scripts
-              run: |
-                chmod +x .github/workflows/ascii-script.sh
-                ./.github/workflows/ascii-script.sh
+          - name: Sleep for 5 Seconds
+            run : sleep 5
+
+
+
+    test_job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: sleep for 10 seconds
+          run : sleep 10
+
+        - name: Test file Exist
+          run : grip -i "dragon" dragon.txt
+
+
+    deploy_job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Read File
+          run : cat dragon.txt
+        
+        - name: Deploy
+          run : echo Deploying...
 
               
             
