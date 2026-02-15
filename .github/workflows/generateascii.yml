@@ -6,10 +6,10 @@ jobs:
       runs-on: ubuntu-latest
       steps:
           - name: Build Application
-            run : sudo apt-install cosway -y
+            run : sudo apt-install cowsay -y
 
           - name: Execute CosWay CMD
-            run : cosway -f dragon "Generating a Dragon using Cosway..." >> dragon.txt
+            run : cowsay -f dragon "Generating a Dragon using Cosway..." >> dragon.txt
 
           - name: Sleep for 5 Seconds
             run : sleep 5
