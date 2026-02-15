@@ -14,8 +14,11 @@ jobs:
                 ls
                 cat README.md
 
+            - name: Install cowsay
+              run: sudo apt-get install cowsay -y
+
             - name : Generate ASCII Artwork
-              run: cowsay -f dragon "Run for coverm I am a Dragon" >> dragon.txt
+              run: /usr/games/cowsay -f dragon "Run for coverm I am a Dragon" >> dragon.txt
 
 
             # - name: List Files
