@@ -11,24 +11,37 @@ jobs:
           - name: Execute CosWay CMD
             run : cowsay -f dragon "Generating a Dragon using Cosway..." >> dragon.txt
 
-          - name: Sleep for 5 Seconds
-            run : sleep 5
-
-
+          - name: Upload Dragon text
+            uses: actions/upload-artifact@v3
+            with:
+              name: dragon-text-file
+              path: dragon.txt
 
     test_job:
+      needs: build_job
       runs-on: ubuntu-latest
       steps:
         - name: sleep for 10 seconds
           run : sleep 10
+        
+        - name: download Dragon artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: dragon-text-file
 
         - name: Test file Exist
-          run : grip -i "dragon" dragon.txt
+          run : grep -i "dragon" dragon.txt
 
 
     deploy_job:
+      needs: test_job
       runs-on: ubuntu-latest
       steps:
+        - name: download Dragon artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: dragon-text-file
+
         - name: Read File
           run : cat dragon.txt
         
