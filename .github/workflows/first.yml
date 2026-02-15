@@ -12,7 +12,7 @@ jobs:
               run: |
                 echo "welcome"
                 ls
-                cat RREADME.md
+                cat README.md
 
             - name : Generate ASCII Artwork
               run: cowsay -f dragon "Run for coverm I am a Dragon" >> dragon.txt
